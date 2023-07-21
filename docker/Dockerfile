@@ -5,5 +5,5 @@ RUN apt-get update && apt-get install -y python3
 # Instalação do pip
 RUN apt-get install python3-pip -y && pip3 install requests
 RUN pip install schedule
-# Define o comando padrão para iniciar o cron e o Apache
-CMD ["sh", "-c", "apache2-foreground"]
+#  command: sh -c "cd /var/www/html/ && python3 cronjob.py"
+CMD sh -c "python3 cronjob.py & apache2-foreground"

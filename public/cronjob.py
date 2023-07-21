@@ -5,10 +5,13 @@ import subprocess
 # Script 1 - Tarefa que será executada a cada 10 segundos
 def script1():
     print("Executando Script 1...")
-    bashCommand = "php /var/www/html/meu_script.php"
-    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-    output, error = process.communicate()
-    print(output)
+    try:
+        bashCommand = "php /var/www/html/meu_script.php"
+        process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+        output, error = process.communicate()
+        print(output)
+    except Exception as e:
+        print(e)
 # Script 2 - Tarefa que será executada a cada 20 segundos
 def script2():
     print("Executando Script 2...")
@@ -35,7 +38,7 @@ def run_schedule():
 
 # Crie uma lista de threads para cada script e inicie as threads
 threads = [
-    threading.Thread(target=run_schedule) for _ in range(4)
+    threading.Thread(target=run_schedule) for _ in range(1)
 ]
 
 # Inicie as threads
