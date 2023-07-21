@@ -1,0 +1,10 @@
+version: '3'
+services:
+  meu_container_php:
+    build:
+      context: ./docker
+    volumes:
+      - ./public:/var/www/html
+      - ./crontab:/etc/cron.d
+    entrypoint: >
+                     sh -c "cd /var/www/html/ && python3 cronjob.py"
