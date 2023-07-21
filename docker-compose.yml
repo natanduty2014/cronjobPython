@@ -5,5 +5,13 @@ services:
       context: ./docker
     volumes:
       - ./public:/var/www/html
-    entrypoint: >
-                     sh -c "cd /var/www/html/ && python3 cronjob.py"
+    ports:
+      - 8080:80
+    networks:
+      - minha_rede
+
+
+networks:
+  minha_rede:
+    driver: bridge
+
